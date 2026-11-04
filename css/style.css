@@ -1,0 +1,281 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap");
+
+/* I colori di ruolo */
+:root {
+  --sfondo: #ffffff;
+  --testo: #000000;
+  --evidenza: #00ffea;
+}
+
+/* Le basi */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  line-height: 1.2;
+  color: var(--testo);
+  background: var(--sfondo);
+}
+
+h1, h2, p, figure {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Header e footer: 1440x107 */
+.header,
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 107px;
+  padding-inline: 5%;
+  background: var(--evidenza);
+}
+
+.header {
+  font-size: 1.25rem;     /* 20px */
+}
+
+.footer {
+  font-size: 0.9375rem;   /* 15px */
+}
+
+.tasto,
+.footer a {
+  color: inherit;
+}
+
+.tasto {
+  text-decoration: none;
+}
+
+.tasto:hover {
+  text-decoration: underline;
+}
+
+/* Le sezioni (base: schermo stretto, tutto in colonna) */
+.slide {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-block: 2rem;
+  padding-inline: 5%;
+}
+
+/* I titoli */
+h1,
+h2 {
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  font-weight: 700;
+  background: var(--evidenza);
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+
+/* Le immagini: in bianco e nero, proporzioni dal design */
+.slide img {
+  width: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+}
+
+main .slide:nth-child(1) img { aspect-ratio: 932 / 727; }   /* cane */
+main .slide:nth-child(2) img { aspect-ratio: 630 / 706; }   /* rana */
+main .slide:nth-child(3) img { aspect-ratio: 640 / 706; }   /* mosca */
+main .slide:nth-child(4) img { aspect-ratio: 640 / 698; }   /* aquila */
+main .slide:nth-child(5) img { aspect-ratio: 736 / 846; }   /* lemure */
+
+/* I testi */
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+  font-size: 1.125rem;
+}
+
+/* L'ultima sezione: immagine e citazione */
+.fine {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.fine p {
+  padding: 1.5rem 1rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: var(--evidenza);
+}
+
+/* Lo schermo grande: il design a 1440px, che scala con la larghezza della finestra */
+@media (min-width: 600px) {
+
+  /* 1rem = 16px a 1440px di larghezza; più stretta è la finestra, più piccolo diventa il rem */
+  html {
+    font-size: calc(100vw / 90);
+  }
+
+  .header,
+  .footer {
+    min-height: 6.6875rem;   /* 107px */
+  }
+  .header {
+    padding-left: 3.68%;     /* 53px */
+    padding-right: 12.99%;   /* 187px */
+  }
+
+  .footer {
+    padding-left: 5.28%;     /* 76px */
+    padding-right: 11.25%;   /* 162px */
+  }
+
+  .slide {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 2.43%;       /* 35px */
+    row-gap: 4.25rem;        /* 68px */
+    margin-top: 10.125rem;   /* 162px */
+    padding: 0;
+  }
+
+  main .slide:nth-child(1) {
+    margin-top: 5.0625rem;   /* 81px */
+    row-gap: 2.875rem;       /* 46px */
+  }
+
+  main .slide:nth-child(4) {
+    row-gap: 4.6875rem;      /* 75px */
+  }
+
+  main .slide:nth-child(5) {
+    margin-top: 10.0625rem;  /* 161px */
+    margin-bottom: 5.125rem; /* 82px */
+  }
+
+  /* Le barre dei titoli: alte 88px, larghe 1280px */
+  h1,
+  h2 {
+    flex: none;
+    display: flex;
+    align-items: center;
+    min-height: 5.5rem;      /* 88px */
+    padding-block: 0;
+    width: 88.89%;           /* 1280px */
+  }
+
+  h1 {
+    padding-left: 11.875%;   /* il testo parte a 171px */
+    font-size: 3.75rem;      /* 60px */
+  }
+
+  h2 {
+    font-size: 3rem;         /* 48px */
+  }
+
+  /* "La forma creata dallo sguardo": barra a destra */
+  main .slide:nth-child(2) h2 {
+    width: 88.82%;
+    margin-left: 11.18%;     /* 161px */
+    padding-left: 2.1875rem; /* 35px */
+  }
+
+  /* "Enigmi biologici...": barra a sinistra */
+  main .slide:nth-child(3) h2 {
+    padding-left: 11.875%;   /* 171px */
+  }
+
+  /* "Valore intrinseco...": barra a destra */
+  main .slide:nth-child(4) h2 {
+    width: 88.82%;
+    margin-left: 11.18%;
+    padding-left: 0.625rem;  /* 10px */
+  }
+
+  /* Le immagini */
+  .slide img {
+    flex: none;
+    min-width: 0;
+  }
+
+  main .slide:nth-child(1) img {     /* cane: 932px, centrato */
+    width: 64.72%;
+    margin-inline: auto;
+  }
+
+  main .slide:nth-child(2) img {     /* rana: 630px, parte a 170px */
+    width: 43.75%;
+    margin-left: 11.81%;
+  }
+
+  main .slide:nth-child(3) img {     /* mosca: 640px, finisce a 1280px */
+    width: 44.44%;
+    margin-right: 11.11%;
+  }
+
+  main .slide:nth-child(4) img {     /* aquila: 640px, parte a 160px */
+    width: 44.44%;
+    margin-left: 11.11%;
+  }
+
+  /* I testi: prendono lo spazio che resta (circa 445px) */
+  .text {
+    flex: 1 1 0;
+    min-width: 0;
+    font-size: 1.875rem;     /* 30px */
+  }
+
+  main .slide:nth-child(2) .text {
+    margin-right: 11.11%;
+  }
+
+  main .slide:nth-child(3) .text {
+    margin-left: 11.11%;
+  }
+
+  main .slide:nth-child(4) .text {
+    margin-right: 11.11%;
+    margin-top: 2.5rem;      /* 40px: nel design il testo è un po' più in basso dell'immagine */
+    font-size: 2rem;         /* 32px */
+  }
+
+  /* Lemure e citazione */
+  .fine {
+    flex: 1 1 0;
+    min-width: 0;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2.58%;              /* 33px */
+    margin-left: 11.11%;     /* 160px */
+  }
+
+  main .slide:nth-child(5) img {
+    width: 57.5%;         /* 736px su 1280px */
+  }
+
+  .fine p {
+    flex: 1 1 0;
+    padding-block: 5.0625rem;   /* 81px */
+    padding-left: 0.3125rem;    /* 5px */
+    padding-right: 13.5%;
+    font-size: 3.625rem;        /* 58px */
+    line-height: 2;
+  }
+}
